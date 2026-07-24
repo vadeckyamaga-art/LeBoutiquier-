@@ -1,0 +1,19 @@
+<?php 
+
+    session_start();
+    include 'connexionBD.php';
+
+    $_SESSION['categorie']=[];
+    $Cat=["Agro-Alimentaire", "Quincaillerie", "Electronique", "Produits d'entretien", "Electroménager", "Epicerie", "Bouquin", "Parfumerie"];
+
+    for($i=0; $i<count($Cat); $i++){
+        $idCat="CAT-".date("Y")."-".random_int(1000, 9999);
+        $insertCat=$Cat[$i];
+        $stmt=$conn->prepare("INSERT INTO catégorie (id_cat, nom_cat) VALUES (?, ?)");
+        $stmt->execute([$idCat, $insertCat]);
+
+        $_SESSION['categorie'][]=['idCat'=>$idCat, 'nomCat'=>$insertCat];
+        echo"Table Categorie remplie avec succès: categorie ".$insertCat." ajouté<br>";
+    }
+
+?>

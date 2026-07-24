@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?PowerDesigner signature="Workspace" version="15.1.0.2850"?>
+<!-- Veuillez ne pas modifier ce fichier -->
+
+<Workspace>
+	<Local Expanded="Yes">
+		<Model Expanded="Yes" ID="{3B8ACA90-25E7-42F0-849D-5BE5C5320EAD}" Loaded="No" Name="Leboutiquier" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="Leboutiquier.prj"/>
+		<Model Expanded="Yes" ID="{E21C6007-AC88-4B21-8F66-97121C1A7EEB}" Loaded="No" Name="ModeleOrienteObjet_1" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="ModeleOrienteObjet_1.moo"/>
+		<Model Expanded="Yes" ID="{ECDEDC9F-8EC5-4ABF-B82D-2C0AA97715D1}" Loaded="No" Name="ModelePhysiquedeDonnee" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="ModelePhysiquedeDonnee.mpd"/>
+		<Model Expanded="Yes" ID="{3B8ACA90-25E7-42F0-849D-5BE5C5320EAD}" Loaded="No" Name="Leboutiquier" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="Leboutiquier.prj"/>
+		<Model Expanded="Yes" ID="{3B8ACA90-25E7-42F0-849D-5BE5C5320EAD}" Loaded="No" Name="Leboutiquier" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="Leboutiquier.prj"/>
+		<Model Expanded="Yes" ID="{3B8ACA90-25E7-42F0-849D-5BE5C5320EAD}" Loaded="No" Name="Leboutiquier" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="Leboutiquier.prj"/>
+		<Model Expanded="Yes" ID="{3B8ACA90-25E7-42F0-849D-5BE5C5320EAD}" Loaded="No" Name="Leboutiquier" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="Leboutiquier.prj"/>
+		<Model Expanded="Yes" ID="{3B8ACA90-25E7-42F0-849D-5BE5C5320EAD}" Loaded="No" Name="Leboutiquier" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="Leboutiquier.prj"/>
+		<Model Expanded="Yes" ID="{3B8ACA90-25E7-42F0-849D-5BE5C5320EAD}" Loaded="No" Name="Leboutiquier" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="Leboutiquier.prj"/>
+		<Model Expanded="Yes" ID="{3B8ACA90-25E7-42F0-849D-5BE5C5320EAD}" Loaded="No" Name="Leboutiquier" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="Leboutiquier.prj"/>
+		<Model Expanded="Yes" ID="{D2973BE2-7235-4A71-B996-890D090433D0}" Loaded="No" Name="Diagramme_de_Sequence" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="Diagramme_de_Sequence.moo"/>
+		<Model Expanded="Yes" ID="{3B8ACA90-25E7-42F0-849D-5BE5C5320EAD}" Loaded="No" Name="Leboutiquier" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="Leboutiquier.prj"/>
+		<Model Expanded="Yes" ID="{3B8ACA90-25E7-42F0-849D-5BE5C5320EAD}" Loaded="No" Name="Leboutiquier" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="Leboutiquier.prj"/>
+		<Model Expanded="Yes" ID="{3B8ACA90-25E7-42F0-849D-5BE5C5320EAD}" Loaded="No" Name="Leboutiquier" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="Leboutiquier.prj"/>
+		<Model ID="{3B8ACA90-25E7-42F0-849D-5BE5C5320EAD}" Loaded="No" Name="Leboutiquier" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="Leboutiquier.prj"/>
+		<Model ID="{D2973BE2-7235-4A71-B996-890D090433D0}" Loaded="No" Name="Diagramme_de_Sequence" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="Diagramme_de_Sequence.moo"/>
+		<Model Expanded="Yes" ID="{3B8ACA90-25E7-42F0-849D-5BE5C5320EAD}" Loaded="No" Name="Leboutiquier" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="Leboutiquier.prj"/>
+		<Model Expanded="Yes" ID="{A5B3AD68-3477-4C07-9E9B-54065BBF6FD9}" Loaded="No" Name="MOO_Leboutiquier" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="MOO_Leboutiquier.moo"/>
+		<Model Expanded="Yes" ID="{3987BDAF-9079-4F1B-81BB-7C926FA6B7E9}" Loaded="No" Name="TP1" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="/DISQUE (D)/IGL2AJ/TP Pratique/ADMIN BD/TP1/TP1/TP1.prj"/>
+		<Model Expanded="Yes" ID="{8457DF59-164D-4B80-85DF-A3C9BB3221C0}" Loaded="No" Name="POO1" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="/DISQUE (D)/IGL2AJ/TP Pratique/POO/POO1/POO1.prj"/>
+		<Model Expanded="Yes" ID="{AFD76552-E52A-4493-BA6D-A23EC922C7E5}" Loaded="No" Name="TP2" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="/DISQUE (D)/IGL2AJ/TP Pratique/ADMIN BD/TP2/TP2/TP2.prj"/>
+		<Model Expanded="Yes" ID="{0B8FC2C5-08CA-4C49-BA9E-1137AB925C70}" Name="Projet_1" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="/wamp64/www/BTS_PRATIQUE_PREPA/Projet_1/Projet_1.prj"/>
+	</Local>
+	<BrowserModule Name="Référentiel"/>
+</Workspace>

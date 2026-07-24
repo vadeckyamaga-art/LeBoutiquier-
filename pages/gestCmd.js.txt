@@ -1,0 +1,82 @@
+document.addEventListener('DOMContentLoaded', ()=>{
+                updateTotaux();
+                const panierContainer=document.getElementById('panier');
+                if(!panierContainer) return;
+
+                panierContainer.addEventListener('click', function(e){
+                    const btnQty=e.target.closest('.btn-plus-qty, .btn-minus-qty');
+                    if(btnQty){
+                        const card=btnQty.closest('.cart-item-card');
+                        const input=card.querySelector('.input-qty');
+                        const idArt=card.getAttribute('data-id-article');
+                        let currentQty=parseInt(input.value);
+
+                        if(btnQty.classList.contains('btn-plus-qty')){
+                            currentQty++;
+                        }
+                        else if(currentQty>1){
+                            currentQty--;
+                        }
+                        else{
+                            return;
+                        }
+
+                        const buttons=card.querySelectorAll('button');
+                        buttons.forEach(btn=>btn.disableb=true);
+
+                        const fd=new FormData();
+                        fd.append('update_qty', 'true');
+                        fd.append('id_article', idArt);
+                        fd.append('new_qty', currentQty);
+
+                        fetch('espaceclient.php', {
+                            method: 'POST', 
+                            body:fd
+                        }).then(response=>response.text()).then(data=>{
+                            if(data.trim()==='success'){
+                                input.value=currentQty;
+                                updateTotaux();
+                            }
+                            else{
+                                alert("Erreur lors de la mise à jour de la quantité!");
+                            }
+                        }).catch(error=>console.error('Erreur: ', error)).finally(()=>{
+                            buttons.forEach(btn=>btn.disabled=false);
+                        });
+                    }
+                    if(e.target.classList.contains('select-boutique')){
+                        const blocBoutique=e.target.closest('.boutique-cart-bloc');
+                        const articleCheks=blocBoutique.querySelectorAll('.select-article');
+                        articleCheks.forEach(cb=>{
+                            cb.checked=e.target.checked;
+                        });
+                        updateTotaux();
+                    }
+                    const btnRemove=e.target.closest('.btn-remove-item');
+                    if(btnRemove){
+                        if(confirm("Voulez-vous retirer cet article du panier ?")){
+                            const card=btnRemove.closest('.cart-item-card');
+                            const idArt=card.getAttribute('data-id-article');
+
+                            const formData=new FormData();
+                            formData.append('supprimer_article', 'true');
+                            formData.append('id_article', idArt);
+
+                            fetch('espaceclient.php',{
+                                method:'POST',
+                                body:formData
+                            }).then(res=>res.text()).then(data=>{
+                                if(data.trim()==='successDelete'){
+                                    card.remove();
+                                    updateTotaux();
+                                }
+                            });
+                        }
+                    }
+                });
+                panierContainer.addEventListener('change', (e)=>{
+                    if(e.target.classList.contains('select-article')){
+                        updateTotaux();
+                    }
+                });
+            });

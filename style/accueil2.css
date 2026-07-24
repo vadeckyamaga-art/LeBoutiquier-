@@ -1,0 +1,195 @@
+.trust-bar {
+   display: flex;
+   flex-wrap: wrap; /* Permet de passer à la ligne sur mobile */
+   justify-content: space-around;
+   align-items: center;
+   background: #fff;
+   padding: 20px 10px;
+   margin: 20px 0;
+   border-radius: 15px;
+   box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.trust-item {
+   display: flex;
+   align-items: center;
+   min-width: 200px; /* Taille minimale pour éviter que ce soit trop serré */
+   margin: 10px;
+   flex: 1; /* Chaque item prend la même place */
+}
+
+.trust-item:hover{
+    transform: translateY(-5px);
+}
+
+.trust-item:hover .icon-box{
+    background: #ff9d00;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(255, 157, 0, 0.4);
+    animation: bounce 0.5s ease;
+}
+
+@keyframes bounce {
+    0%, 100%{transform: scale(1);}
+    50%{transform: scale(1.2);}
+}
+
+.trust-item:hover .trust-text h5{
+    color: #ff9d00;
+    transition: 0.3s;
+}
+
+.icon-box {
+   width: 50px;
+   height: 50px;
+   background: rgba(255, 157, 0, 0.1); /* Ton orange avec opacité */
+   color: #ff9d00; /* Ton orange Leboutiquier */
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 12px;
+   font-size: 1.4rem;
+   margin-right: 15px;
+}
+
+.trust-text h5 {
+   margin: 0;
+   font-size: 1rem;
+   font-weight: 700;
+   color: #333;
+}
+
+.trust-text p {
+   margin: 0;
+   font-size: 0.85rem;
+   color: #777;
+}
+
+/* Ajustements pour les très petits écrans (iPhone SE, etc.) */
+@media (max-width: 480px) {
+   .trust-item {
+      min-width: 100%; /* Prend toute la largeur sur tout petit écran */
+      justify-content: flex-start;
+      padding-left: 20px;
+   }
+}
+/* Conteneur pour aligner le select et l'input */
+.leb-search-wrapper {
+    display: flex;
+    align-items: center;
+    background: #f8f9fa; /* Même fond que ton input actuel */
+    border: 1px solid #e0e0e0;
+    border-radius: 50px;
+    padding: 5px 5px 5px 20px;
+    width: 100%;
+}
+.leb-search-wrapper:focus-within{
+    border-color: #ff9d00;
+    box-shadow: 0 0 8px rgba(255, 157, 0, 0.2);
+    background-color: #fff;
+}
+.leb-btn-submit{
+    background-color: #ff9d00;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 40px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+.leb-btn-submit:hover{
+    background: #e68a00;
+    transform: scale(1.02);
+}
+@media (max-width: 567px) {
+    .leb-btn-submit{
+        padding: 8px 15px;
+    }
+    .leb-search-wrapper{
+        padding-left: 10px;
+    }
+}
+
+/* Style de la liste déroulante */
+.leb-search-type {
+    border: none;
+    background: transparent;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #555;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 5px;
+    border-right: 1px solid #ddd; /* Petit trait de séparation */
+    margin-right: 10px;
+}
+
+.leb-searchbox {
+    flex: 1; /* L'input prend tout le reste de la place */
+    border: none !important;
+    background: transparent !important;
+    padding: 10px 0;
+}
+
+/* Adaptabilité Mobile */
+@media (max-width: 576px) {
+    .leb-search-type {
+        font-size: 0.8rem;
+        margin-right: 5px;
+        padding-right: 5px;
+    }
+}
+.search-suggestions-box {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-top: none;
+    z-index: 9999 !important;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    display: none; /* Caché par défaut */
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.suggestion-item {
+    padding: 12px 20px;
+    cursor: pointer;
+    border-bottom: 1px solid #f1f1f1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.2s;
+}
+
+.suggestion-item:hover {
+    background-color: #fff5e6;
+    color: #ff9d00;
+}
+
+.suggestion-item i {
+    font-size: 0.8rem;
+    color: #ccc;
+}
+.suggestion-item.no-result{
+    cursor: default;
+    background-color: #fdfdfd;
+}
+.suggestion-item.no-result:hover{
+    background-color: #fdfdfd;
+    color: #888;
+}
+#searchSuggestions{
+    background-color: white !important;
+    border: 1px solid #ddd !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    min-height: 50px;
+    position: absolute;
+    width: 100%;
+    z-index: 9999;
+}

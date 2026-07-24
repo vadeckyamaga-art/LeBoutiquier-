@@ -1,0 +1,42 @@
+.order-card {
+    transition: all 0.3s ease;
+    border: 1px solid #eee;
+    cursor: pointer;
+}
+.order-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
+    border-color: var(--leb-orange);
+}
+.status-badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+.status-pending { background: #fff3cd; color: #856404; }
+.status-shipped { background: #cce5ff; color: #004085; }
+.status-delivered { background: #d4edda; color: #155724; }
+.status-cancelled { background: #f8d7da; color: #721c24; }
+
+.order-item-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.btn-state {
+    border-radius: 10px;
+    padding: 8px 15px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+#dynamic-input-container {
+    display: none;
+    margin-top: 15px;
+    animation: fadeIn 0.3s;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,101 @@
+:root {
+    --leb-orange: #f56c1c;
+    --leb-bg-light: #f9f9fa;
+    --leb-grey: #202124;
+    --leb-search-bg: #fff;
+}
+body { 
+    background: var(--leb-bg-light); 
+    color: var(--leb-grey);
+}
+.video-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}
+.leb-navbar {
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.025);
+}
+.leb-navbar-brand {
+    color: var(--leb-orange)!important;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 1.8rem;
+}
+.pause-btn {
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+    z-index: 10;
+}
+.leb-login-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.leb-login-center {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.leb-login-form-container {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 6px 30px rgba(40, 41, 61, 0.09);
+    padding: 2.5rem 2rem;
+    max-width: 420px;
+    width: 100%;
+}
+.leb-btn-orange {
+    background: var(--leb-orange);
+    color: #fff;
+    border-radius: 20px;
+    border:none;
+    height: 50px;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+.leb-btn-orange:hover {
+    background: #d95b11;
+    color: #fff;
+}
+.leb-btn-outline {
+    border-radius: 20px;
+    border: 1px solid #111;
+    height: 50px;
+    font-weight: bold;
+    background: #fff;
+}
+.leb-separator {
+    display: flex;
+    align-items: center;
+    margin: 1.3rem 0;
+}
+.leb-separator hr {
+    flex-grow: 1;
+    margin: 0;
+}
+.leb-separator span {
+    padding: 0 1rem;
+    color: #888;
+    font-weight: 500;
+    font-size: 1.05rem;
+}
+@media (max-width: 768px) {
+    .leb-login-form-container {
+        padding: 1.8rem 0.6rem;
+        width: 100%;
+        max-width: 98vw;
+    }
+    .pause-btn {
+        right: 1rem;
+        top: 1rem;
+    }
+}

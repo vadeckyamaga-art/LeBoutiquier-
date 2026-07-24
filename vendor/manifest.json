@@ -1,0 +1,23 @@
+{
+  "name": "LeBoutiquier",
+  "short_name": "LeBoutiquier",
+  "description": "Application vente d'articles locaux - installable",
+  "start_url": "../pages/accueil.php",
+  "scope": "/LeBoutiquier/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#EA580C",
+  "icons": [
+    {
+      "src": "../Image/favoicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "../Image/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

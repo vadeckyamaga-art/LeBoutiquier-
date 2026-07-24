@@ -1,0 +1,51 @@
+:root {
+    --leb-orange: #f56c1c;
+    --leb-bg-light: #f9f9fa;
+    --leb-grey: #202124;
+    --leb-search-bg: #fff;
+}
+body { 
+    background: var(--leb-bg-light); 
+    color: var(--leb-grey);
+}
+.video-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}
+.leb-navbar {
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.025);
+}
+.leb-navbar-brand {
+    color: var(--leb-orange)!important;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 1.8rem;
+}
+.pause-btn {
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+    z-index: 10;
+}
+.leb-form-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.leb-form-container {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    padding: 2rem;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    max-width: 600px;
+}

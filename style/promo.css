@@ -1,0 +1,97 @@
+:root {
+    --primary-color: #007bff;
+    --secondary-gradient: linear-gradient(135deg, #007bff 0%, #00d4ff 100%);
+}
+
+.text-gradient {
+    background: var(--secondary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+}
+
+.bg-primary-soft {
+    background-color: rgba(0, 123, 255, 0.1);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.delegation-card {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.delegation-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1) !important;
+}
+
+.icon-box {
+    background: var(--secondary-gradient);
+    color: white;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+/* Style du bouton avec animation */
+.btn-delegation {
+    background: var(--secondary-gradient);
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3);
+}
+
+.btn-delegation:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 25px rgba(0, 123, 255, 0.4);
+}
+
+/* Animations des icônes flottantes */
+.bg-gradient-blue {
+    background: var(--secondary-gradient);
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.float-item {
+    position: absolute;
+    color: white;
+    opacity: 0.8;
+    animation: float 6s ease-in-out infinite;
+}
+
+.float-item:nth-child(1) { top: 20%; left: 30%; animation-delay: 0s; }
+.float-item:nth-child(2) { top: 50%; right: 20%; animation-delay: 2s; }
+.float-item:nth-child(3) { bottom: 20%; left: 40%; animation-delay: 4s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-30px) rotate(10deg); }
+}
+
+/* Entrée progressive */
+.anim-slide {
+    animation: fadeInUp 0.8s ease backwards;
+}
+.delay-1 { animation-delay: 0.2s; }
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

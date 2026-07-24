@@ -1,0 +1,114 @@
+<?php
+    session_start();
+    include 'connexionBD.php';
+    header('Content-Type: application/json');
+    $usersID=$_SESSION['id'];
+    $queryclient=$conn->prepare("SELECT * FROM client WHERE id=?");
+    $queryclient->execute([$usersID]);
+    $clientRow=$queryclient->fetch();
+    if($clientRow){
+        $clientID=$clientRow['id_client'];
+    }
+    else{
+        header('Location: connexion.php');
+        exit();
+    }
+
+    if($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['type_achat'])){
+        $id_commerçant = $_POST['id_boutique_modal']??'';
+        $article_selectionnee=$_POST['id_article_selectionne'];
+        $type_achat = $_POST['type_achat'];
+        $adresse = ($type_achat === 'livraison') ? htmlspecialchars($_POST['adresse_livraison']) : 'Retrait en boutique';
+        $frais = ($type_achat === 'livraison') ? 1500 : 0;
+        $telLivraison=htmlspecialchars(trim($_POST['telephone_livraison']))??'';
+
+        try {
+            $conn->beginTransaction();
+            $tel_vendeur="";
+            $message="";
+
+            $updateTel=$conn->prepare("UPDATE utilisateur SET tel=? WHERE id=?");
+            $updateTel->execute([$telLivraison, $usersID]);
+            $_SESSION['tel']=$telLivraison;
+
+            // 1. Récupérer les articles cochés dans le panier pour cette boutique
+            $stmt = $conn->prepare("SELECT p.id_article, p.Quantite, a.prix_article 
+                                    FROM panier p 
+                                    JOIN article a ON p.id_article = a.id_article 
+                                    WHERE p.id_client = ? AND a.id_commerçant = ? AND p.id_article=?");
+            $stmt->execute([$clientID, $id_commerçant, $article_selectionnee]);
+            $items = $stmt->fetchAll();
+
+            // 2. Calculer le total
+            $total_brut = 0;
+            foreach ($items as $item) {
+                $total_brut += ($item['prix_article'] * $item['Quantite']);
+            }
+            $total_final = $total_brut + $frais;
+
+            // 3. Créer la commande principale
+            $id_cmd = "CMD-".date("Y")."-".random_int(1000, 9999);
+            $code_retrait="CDR-".date("Y")."-".random_int(1000, 9999);
+            $qCmd = $conn->prepare("INSERT INTO commande (id_commande, Code_retrait, type_achat, id_client, frais_livraison, statut, Montant_commande, numero_livraison, adresse_livraison, id_commerçant) VALUES (?, ?, ?, ?, ?, 'En attente', ?, ?, ?, ?)");
+            $qCmd->execute([$id_cmd, $code_retrait, $type_achat, $clientID, $frais, $total_final, $telLivraison, $adresse, $id_commerçant]);
+
+            $id_commande=$conn->lastInsertId();
+
+            //Message à envoyer au boutiquier
+            $stmtTel=$conn->prepare("SELECT dtl.quantite_cmd, dtl.prix_unitaire, a.nom_article, u.tel, cmd.Montant_commande as total_commande, cmd.adresse_livraison, cmd.id_commande
+                                     FROM details_commande dtl, article a, utilisateur u, commande cmd, client clt, commerçant co
+                                     WHERE dtl.id_commande=cmd.id_commande 
+                                     AND dtl.id_article=a.id_article 
+                                     AND cmd.id_client=clt.id_client 
+                                     AND co.id=u.id
+                                     AND cmd.id_commerçant=co.id_commerçant
+                                     AND u.compte='boutiquier'
+                                     AND cmd.id_commande=?");
+            $stmtTel->execute([$id_commande]);
+            $resultats=$stmtTel->fetchAll();
+            if($resultats){
+                $info=$resultats[0];
+                $tel_vendeur=preg_replace('/[^0-9]/', '', $info['tel']);
+
+                $message="*NOUVELLE COMMANDE SUR LEBOUTIQUIER*\n\n";
+                $message.="*Commande:* #".$info['id_commande']."\n";
+                $message.="--------------------------------------\n";
+                $message.="*Détails de la commande: *\n";
+
+                foreach($resultats as $lignes){
+                    $message.="&#9679; ".$lignes['nom_article']."(X" .$lignes['quantite_cmd'].")\n";
+                }
+
+                $message.="---------------------------------------\n";
+                $message.="*TOTAL A PERCEVOIR : *".number_format($info['total_commande'], 0, '.', '')." FCFA\n";
+                $message.="*Lieu de livraison: *".$info['adresse_livraison']."\n\n";
+                $message.="_Merci de traiter cette commande rapidement._";
+
+            }
+            // 4. Insérer les détails et nettoyer le panier
+            foreach ($items as $item) {
+                // Détails
+                $id_detail="DTL-".date("Y")."-".random_int(1000, 9999);
+                $qDet = $conn->prepare("INSERT INTO details_commande (id_detail, quantite_cmd, prix_unitaire, id_article, id_commande) VALUES (?, ?, ?, ?, ?)");
+                $qDet->execute([$id_detail, $item['Quantite'], $item['prix_article'], $item['id_article'], $id_cmd]);
+                
+                // Suppression du panier
+                $qDel = $conn->prepare("DELETE FROM panier WHERE id_client = ? AND id_article = ?");
+                $qDel->execute([$clientID, $item['id_article']]);
+            }
+
+            $conn->commit();
+            echo json_encode([
+                'status'=>'success',
+                'tel'=>$tel_vendeur,
+                'message'=>$message
+            ]);
+        }
+        catch (Exception $e) {
+            if($conn->inTransaction()) $conn->rollBack();
+            echo json_encode(['status'=>'error', 'message'=>$e->getMessage()]);
+        }
+        exit();
+    }
+
+?>

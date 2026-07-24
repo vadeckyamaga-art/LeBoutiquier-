@@ -1,0 +1,36 @@
+.product-card {
+    transition: box-shadow 0.2s;
+    border-radius: 18px;
+    min-height: 240px;
+}
+.product-card:hover {
+    box-shadow: 0 0 0.5rem #e2e2e2;
+}
+.product-img {
+    max-width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 12px;
+    background: #f6f6f6;
+    aspect-ratio: 1.2/1;
+}
+@media (max-width:767px) {
+    .product-title {
+        font-size: 1.15rem;
+    }
+    .product-card {
+        margin-bottom: 1rem;
+    }
+}
+.boutique-name {
+    color: #de5a1a;
+    font-weight: bold;
+}
+.product-meta {
+    font-size: .92em;
+    color: #666;
+}
+.lb-search-bar {
+    max-width: 400px;
+    margin: 0 auto 1.8rem auto;
+}
